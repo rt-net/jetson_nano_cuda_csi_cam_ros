@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>jetson_nano_cuda_csi_cam</name>
+  <version>0.1.0</version>
+  <description>A ROS package for connecting CSI cameras of the Jetson Nano via GStreamer</description>
+
+  <maintainer email="support@rt-net.jp">RT Corporation</maintainer>
+  <author email="daisuke.sato@rt-net.jp">Daisuke Sato</author>
+
+  <license>Apache-2.0</license>
+
+  <url type="website">https://github.com/rt-net/jetson_nano_csi_cam_ros/wiki</url>
+  <url type="bugtracker">https://github.com/rt-net/jetson_nano_csi_cam_ros/issues</url>
+  <url type="repository">https://github.com/rt-net/jetson_nano_csi_cam_ros</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+</package>
