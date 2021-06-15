@@ -19,10 +19,9 @@
  *
  * Copyright (c) 2020, NVIDIA CORPORATION. All rights reserved.
  *
- * https://github.com/dusty-nv/ros_deep_learning/blob/ac40e93413f4b7cb911a18c0e4d5daac479234d4/src/image_converter.cpp
+ * https://github.com/dusty-nv/ros_deep_learning/blob/ac40e93413f4b7cb911a18c0e4d5daac479234d4/src/node_video_source.cpp
  */
 
-// #include <ros/ros.h>
 #include "jetson_nano_cuda_csi_cam/video_stream_node.h"
 
 #include <camera_info_manager/camera_info_manager.h>
