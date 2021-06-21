@@ -39,7 +39,7 @@
 	<arg name="input_height" default="180"/>
 	<arg name="input_codec" default="unknown"/>
 	<arg name="input_loop" default="0"/>
-  <node pkg="jetson_nano_cuda_csi_cam" type="video_source" name="csi_cam_0">
+  <node pkg="jetson_nano_cuda_csi_cam" type="video_stream" name="csi_cam_0">
     <param name="resource" value="$(arg input)"/>
 		<param name="width" value="$(arg input_width)"/>
 		<param name="height" value="$(arg input_height)"/>
