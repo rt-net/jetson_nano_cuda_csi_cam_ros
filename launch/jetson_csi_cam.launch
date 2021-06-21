@@ -19,7 +19,7 @@
 
   <!-- Define the camera calibration parameter -->
   <param name="$(arg cam_name)/camera_info_url" type="string" if="$(arg load_camera_info)"
-    value="package://jetson_nano_csi_cam/config/sainsmart-imx219-jetson-nano-160deg-fov-$(arg cam_name).yaml" />
+    value="package://jetson_nano_cuda_csi_cam/config/sainsmart-imx219-jetson-nano-160deg-fov-$(arg cam_name).yaml" />
 
   <!-- Define the GSCAM pipeline -->
   <param name="$(arg cam_name)/gscam_config" type="string" value="nvarguscamerasrc sensor-id=$(arg sensor_id) ! video/x-raw(memory:NVMM),
@@ -39,7 +39,7 @@
 	<arg name="input_height" default="180"/>
 	<arg name="input_codec" default="unknown"/>
 	<arg name="input_loop" default="0"/>
-  <node pkg="jetson_nano_csi_cam" type="video_source" name="csi_cam_0">
+  <node pkg="jetson_nano_cuda_csi_cam" type="video_source" name="csi_cam_0">
     <param name="resource" value="$(arg input)"/>
 		<param name="width" value="$(arg input_width)"/>
 		<param name="height" value="$(arg input_height)"/>
