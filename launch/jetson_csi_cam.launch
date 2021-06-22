@@ -29,6 +29,7 @@
     <param name="width" value="$(arg width)"/>
     <param name="height" value="$(arg height)"/>
     <param name="loop" value="$(arg input_loop)"/>
+    <param name="flip_method" value="$(arg flip_method)"/>
   </node>
   <node name="image_republish_$(arg sensor_id)" pkg="image_transport" type="republish" args="raw compressed">
     <param name="image_transport" value="raw"/>
