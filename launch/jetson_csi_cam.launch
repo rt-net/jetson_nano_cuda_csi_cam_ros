@@ -8,7 +8,7 @@
   <arg name="width" default="640" />                         <!-- Image Width to stream -->
   <arg name="height" default="480" />                        <!-- Image Height to stream -->
   <arg name="fps" default="20" />                            <!-- Desired framerate. True framerate may not reach this if set too high. -->
-  <arg name="flip_method" default="0" />                     <!-- flip_method -->
+  <arg name="flip_method" default="rotate-180" />            <!-- flip_method in str -->
   <arg name="load_camera_info" default="true" />             <!-- Load the camera info or not-->
 
   <!-- Make arguments available to parameter server -->

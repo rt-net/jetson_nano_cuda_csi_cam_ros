@@ -120,6 +120,7 @@ int main(int argc, char** argv)
     video_options.codec = videoOptions::CodecFromStr(codec_str.c_str());
 
   if (flipmethod_str.size() != 0)
+    // flipmethod: none, counterclockwise, rotate-180, clockwise, horizontal, upper-right-diagonal, vertical, upper-left-diagonal
     video_options.flipMethod = videoOptions::FlipMethodFromStr(flipmethod_str.c_str());
 
   video_options.width = video_width;
