@@ -87,6 +87,7 @@ int main(int argc, char** argv)
 
   std::string resource_str;
   std::string codec_str;
+  std::string flipmethod_str;
 
   int video_width = video_options.width;
   int video_height = video_options.height;
@@ -96,6 +97,7 @@ int main(int argc, char** argv)
   __ros_declare_parameter(private_nh, "height", video_height);
   __ros_declare_parameter(private_nh, "framerate", video_options.frameRate);
   __ros_declare_parameter(private_nh, "loop", video_options.loop);
+  __ros_declare_parameter(private_nh, "flip_method", flipmethod_str);
 
   /*
    * retrieve parameters
@@ -106,6 +108,7 @@ int main(int argc, char** argv)
   private_nh.getParam("height", video_height);
   private_nh.getParam("framerate", video_options.frameRate);
   private_nh.getParam("loop", video_options.loop);
+  private_nh.getParam("flip_method", flipmethod_str);
 
   if (resource_str.size() == 0)
   {
@@ -115,6 +118,10 @@ int main(int argc, char** argv)
 
   if (codec_str.size() != 0)
     video_options.codec = videoOptions::CodecFromStr(codec_str.c_str());
+
+  if (flipmethod_str.size() != 0)
+    // flipmethod: none, counterclockwise, rotate-180, clockwise, horizontal, upper-right-diagonal, vertical, upper-left-diagonal
+    video_options.flipMethod = videoOptions::FlipMethodFromStr(flipmethod_str.c_str());
 
   video_options.width = video_width;
   video_options.height = video_height;

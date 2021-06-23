@@ -8,7 +8,7 @@
   <arg name="width" default="640" />                         <!-- Image Width to stream -->
   <arg name="height" default="480" />                        <!-- Image Height to stream -->
   <arg name="fps" default="20" />                            <!-- Desired framerate. True framerate may not reach this if set too high. -->
-  <arg name="flip_method" default="0" />                     <!-- flip_method -->
+  <arg name="flip_method" default="rotate-180" />            <!-- flip_method in str -->
   <arg name="load_camera_info" default="true" />             <!-- Load the camera info or not-->
 
   <!-- Make arguments available to parameter server -->
@@ -31,6 +31,7 @@
     <param name="width" value="$(arg input_width)"/>
     <param name="height" value="$(arg input_height)"/>
     <param name="loop" value="$(arg input_loop)"/>
+    <param name="flip_method" value="$(arg flip_method)"/>
   </node>
   <node name="image_republish_0" pkg="image_transport" type="republish" args="raw compressed">
     <param name="image_transport" value="raw"/>
