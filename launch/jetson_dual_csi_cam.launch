@@ -6,7 +6,7 @@
   <arg name="width" default="480" />                         <!-- Image Width to stream -->
   <arg name="height" default="270" />                        <!-- Image Height to stream -->
   <arg name="fps" default="30" />                            <!-- Desired framerate. True framerate may not reach this if set too high. -->
-  <arg name="flip_method" default="0" />                     <!-- flip_method -->
+  <arg name="flip_method" default="rotate-180" />            <!-- flip_method in str -->
 
   <include file="$(find jetson_nano_cuda_csi_cam)/launch/jetson_csi_cam.launch">
     <arg name="sensor_id" value="0" />
