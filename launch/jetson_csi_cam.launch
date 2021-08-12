@@ -10,6 +10,7 @@
   <arg name="fps" default="20" />                            <!-- Desired framerate. True framerate may not reach this if set too high. -->
   <arg name="flip_method" default="rotate-180" />            <!-- flip_method in str -->
   <arg name="load_camera_info" default="true" />             <!-- Load the camera info or not-->
+  <arg name="input_loop" default="false" />             <!-- Load the camera info or not-->
 
   <!-- Make arguments available to parameter server -->
   <param name="$(arg cam_name)/camera_id" type="int" value="$(arg sensor_id)" />
@@ -21,21 +22,13 @@
   <param name="$(arg cam_name)/camera_info_url" type="string" if="$(arg load_camera_info)"
     value="package://jetson_nano_cuda_csi_cam/config/sainsmart-imx219-jetson-nano-160deg-fov-$(arg cam_name).yaml" />
 
-  <arg name="input" default="csi://0"/>
-  <arg name="input_width" default="320"/>
-  <arg name="input_height" default="180"/>
-  <arg name="input_codec" default="unknown"/>
-  <arg name="input_loop" default="0"/>
-  <node pkg="jetson_nano_cuda_csi_cam" type="video_stream" name="csi_cam_0">
-    <param name="resource" value="$(arg input)"/>
-    <param name="width" value="$(arg input_width)"/>
-    <param name="height" value="$(arg input_height)"/>
+  <node pkg="jetson_nano_cuda_csi_cam" type="video_stream" name="$(arg cam_name)">
+    <param name="resource" value="csi://$(arg sensor_id)"/>
     <param name="loop" value="$(arg input_loop)"/>
     <param name="flip_method" value="$(arg flip_method)"/>
   </node>
   <node name="image_republish_0" pkg="image_transport" type="republish" args="raw compressed">
-    <param name="image_transport" value="raw"/>
-    <remap from="in" to="/csi_cam_0/raw" />
-    <remap from="out" to="/csi_cam_0/raw" />
+    <remap from="in" to="/$(arg cam_name)/image_raw" />
+    <remap from="out" to="/$(arg cam_name)/image_raw" />
   </node>
 </launch>
