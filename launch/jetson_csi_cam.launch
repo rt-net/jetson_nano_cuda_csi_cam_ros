@@ -10,7 +10,6 @@
   <arg name="fps" default="20" />                            <!-- Desired framerate. True framerate may not reach this if set too high. -->
   <arg name="flip_method" default="rotate-180" />            <!-- flip_method in str -->
   <arg name="load_camera_info" default="true" />             <!-- Load the camera info or not-->
-  <arg name="input_loop" default="false" />             <!-- Load the camera info or not-->
 
   <!-- Make arguments available to parameter server -->
   <param name="$(arg cam_name)/camera_id" type="int" value="$(arg sensor_id)" />
@@ -24,7 +23,7 @@
 
   <node pkg="jetson_nano_cuda_csi_cam" type="video_stream" name="$(arg cam_name)">
     <param name="resource" value="csi://$(arg sensor_id)"/>
-    <param name="loop" value="$(arg input_loop)"/>
+    <param name="loop" value="0"/>
     <param name="flip_method" value="$(arg flip_method)"/>
   </node>
   <node name="image_republish_0" pkg="image_transport" type="republish" args="raw compressed">
