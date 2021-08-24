@@ -76,7 +76,7 @@ int main(int argc, char** argv)
   /*
    * create node instance
    */
-  ros::init(argc, argv, "video_source");
+  ros::init(argc, argv, "video_streamer");
   ros::NodeHandle nh;
   ros::NodeHandle private_nh("~");
 
@@ -93,9 +93,9 @@ int main(int argc, char** argv)
   int video_height = video_options.height;
   __ros_declare_parameter(private_nh, "resource", resource_str);
   __ros_declare_parameter(private_nh, "codec", codec_str);
-  __ros_declare_parameter(private_nh, "width", video_width);
-  __ros_declare_parameter(private_nh, "height", video_height);
-  __ros_declare_parameter(private_nh, "framerate", video_options.frameRate);
+  __ros_declare_parameter(private_nh, "image_width", video_width);
+  __ros_declare_parameter(private_nh, "image_height", video_height);
+  __ros_declare_parameter(private_nh, "target_fps", video_options.frameRate);
   __ros_declare_parameter(private_nh, "loop", video_options.loop);
   __ros_declare_parameter(private_nh, "flip_method", flipmethod_str);
 
@@ -104,9 +104,9 @@ int main(int argc, char** argv)
    */
   private_nh.getParam("resource", resource_str);
   private_nh.getParam("codec", codec_str);
-  private_nh.getParam("width", video_width);
-  private_nh.getParam("height", video_height);
-  private_nh.getParam("framerate", video_options.frameRate);
+  private_nh.getParam("image_width", video_width);
+  private_nh.getParam("image_height", video_height);
+  private_nh.getParam("target_fps", video_options.frameRate);
   private_nh.getParam("loop", video_options.loop);
   private_nh.getParam("flip_method", flipmethod_str);
 

@@ -21,19 +21,13 @@
   <param name="$(arg cam_name)/camera_info_url" type="string" if="$(arg load_camera_info)"
     value="package://jetson_nano_cuda_csi_cam/config/sainsmart-imx219-jetson-nano-160deg-fov-$(arg cam_name).yaml" />
 
-  <arg name="input" default="csi://$(arg sensor_id)"/>
-  <arg name="input_codec" default="unknown"/>
-  <arg name="input_loop" default="0"/>
   <node pkg="jetson_nano_cuda_csi_cam" type="video_stream" name="$(arg cam_name)">
-    <param name="resource" value="$(arg input)"/>
-    <param name="width" value="$(arg width)"/>
-    <param name="height" value="$(arg height)"/>
-    <param name="loop" value="$(arg input_loop)"/>
+    <param name="resource" value="csi://$(arg sensor_id)"/>
+    <param name="loop" value="0"/>
     <param name="flip_method" value="$(arg flip_method)"/>
   </node>
-  <node name="image_republish_$(arg sensor_id)" pkg="image_transport" type="republish" args="raw compressed">
-    <param name="image_transport" value="raw"/>
-    <remap from="in" to="$(arg cam_name)/image_raw" />
-    <remap from="out" to="$(arg cam_name)/image_raw" />
+  <node name="image_republish_0" pkg="image_transport" type="republish" args="raw compressed">
+    <remap from="in" to="/$(arg cam_name)/image_raw" />
+    <remap from="out" to="/$(arg cam_name)/image_raw" />
   </node>
 </launch>
