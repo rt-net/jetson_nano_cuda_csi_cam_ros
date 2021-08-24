@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Command Line Arguments -->
-    <arg name="cam_name_prefix" default="csi_cam_" /> <!-- The name of the camera (corrsponding to the camera info) -->
+  <arg name="cam_name_prefix" default="csi_cam_" />          <!-- The name of the camera (corrsponding to the camera info) -->
   <arg name="sync_sink" default="true" />                    <!-- Synchronize the app sink. Setting this to false may resolve problems with sub-par framerates. -->
   <arg name="width" default="480" />                         <!-- Image Width to stream -->
   <arg name="height" default="270" />                        <!-- Image Height to stream -->
