@@ -3,7 +3,6 @@ project(jetson_nano_cuda_csi_cam)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  std_msgs
   sensor_msgs
 )
 
@@ -16,7 +15,7 @@ message("-- CUDA version: ${CUDA_VERSION}")
 ###################################
 
 catkin_package(
-  CATKIN_DEPENDS roscpp std_msgs sensor_msgs
+  CATKIN_DEPENDS roscpp sensor_msgs
 )
 
 ###########
@@ -40,13 +39,23 @@ target_link_libraries(video_stream ${catkin_LIBRARIES} jetson-utils)
 ## Install ##
 #############
 
-foreach(dir launch config)
-  install(DIRECTORY ${dir}/ 
-    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir}
-  )
-endforeach(dir)
+# Mark executables and/or libraries for installation
+install(TARGETS video_stream
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+# Mark cpp header files for installation
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+)
+
+# Mark other files for installation (e.g. launch and bag files, etc.)
+install(DIRECTORY config launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
 
 #############
 ## Testing ##
 #############
-
