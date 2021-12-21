@@ -17,12 +17,20 @@ This ROS package is designed to acquire images from the one or two CSI cameras a
 
 ### 1. Download and install [dusty-nv/jetson-utils](https://github.com/dusty-nv/jetson-utils)
 
+Check if it is already installed.
+
+```
+ldconfig -p | grep jetson && echo "installed" || echo "not installed yet"
+```
+
+If it is not installed, follow the steps below to install it.
+
 ```
 sudo apt install libglew-dev
 git clone https://github.com/dusty-nv/jetson-utils.git
 mkdir jetson-utils/build
 cd jetson-utils/build
-cmake ..
+cmake -DENABLE_NVMM=OFF ..
 make
 sudo make install
 sudo ldconfig
