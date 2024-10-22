@@ -40,7 +40,7 @@ sudo ldconfig
 
 ```
 cd ~/catkin_ws/src
-git clone -b $ROS_DISTRO-devel https://github.com/rt-net/jetson_nano_cuda_csi_cam_ros.git
+git clone https://github.com/rt-net/jetson_nano_cuda_csi_cam_ros.git
 rosdep install -r -i -y --from-paths jetson_nano_cuda_csi_cam_ros
 catkin build
 catkin source
